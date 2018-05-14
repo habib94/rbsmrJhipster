@@ -1,0 +1,30 @@
+
+<div *ngIf="templateFormulaire">
+    <h2><span jhiTranslate="rbsmrJhipsterApp.templateFormulaire.detail.title">Template Formulaire</span> {{templateFormulaire.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="rbsmrJhipsterApp.templateFormulaire.code">Code</span></dt>
+        <dd>
+            <span>{{templateFormulaire.code}}</span>
+        </dd>
+        <dt><span jhiTranslate="rbsmrJhipsterApp.templateFormulaire.nom">Nom</span></dt>
+        <dd>
+            <span>{{templateFormulaire.nom}}</span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'template-formulaire-rbsmr/'+ templateFormulaire.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

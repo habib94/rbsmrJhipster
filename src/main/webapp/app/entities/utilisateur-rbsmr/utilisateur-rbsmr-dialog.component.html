@@ -1,0 +1,125 @@
+<form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+
+    <div class="modal-header">
+        <h4 class="modal-title" id="myUtilisateurLabel" jhiTranslate="rbsmrJhipsterApp.utilisateur.home.createOrEditLabel">Create or edit a Utilisateur</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                (click)="clear()">&times;</button>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" [hidden]="!utilisateur.id">
+            <label for="id" jhiTranslate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                   [(ngModel)]="utilisateur.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="rbsmrJhipsterApp.utilisateur.nom" for="field_nom">Nom</label>
+            <input type="text" class="form-control" name="nom" id="field_nom"
+                [(ngModel)]="utilisateur.nom" maxlength="25"/>
+            <div [hidden]="!(editForm.controls.nom?.dirty && editForm.controls.nom?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.nom?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 25 }">
+                   This field cannot be longer than 25 characters.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="rbsmrJhipsterApp.utilisateur.prenom" for="field_prenom">Prenom</label>
+            <input type="text" class="form-control" name="prenom" id="field_prenom"
+                [(ngModel)]="utilisateur.prenom" maxlength="25"/>
+            <div [hidden]="!(editForm.controls.prenom?.dirty && editForm.controls.prenom?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.prenom?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 25 }">
+                   This field cannot be longer than 25 characters.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="rbsmrJhipsterApp.utilisateur.email" for="field_email">Email</label>
+            <input type="text" class="form-control" name="email" id="field_email"
+                [(ngModel)]="utilisateur.email" maxlength="60"/>
+            <div [hidden]="!(editForm.controls.email?.dirty && editForm.controls.email?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.email?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 60 }">
+                   This field cannot be longer than 60 characters.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="rbsmrJhipsterApp.utilisateur.tel" for="field_tel">Tel</label>
+            <input type="text" class="form-control" name="tel" id="field_tel"
+                [(ngModel)]="utilisateur.tel" minlength="10" maxlength="15"/>
+            <div [hidden]="!(editForm.controls.tel?.dirty && editForm.controls.tel?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.tel?.errors?.minlength" jhiTranslate="entity.validation.minlength" translateValues="{ min: 10 }">
+                   This field is required to be at least 10 characters.
+                </small>
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.tel?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 15 }">
+                   This field cannot be longer than 15 characters.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="rbsmrJhipsterApp.utilisateur.identificateur" for="field_identificateur">Identificateur</label>
+            <input type="text" class="form-control" name="identificateur" id="field_identificateur"
+                [(ngModel)]="utilisateur.identificateur" maxlength="100"/>
+            <div [hidden]="!(editForm.controls.identificateur?.dirty && editForm.controls.identificateur?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.identificateur?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 100 }">
+                   This field cannot be longer than 100 characters.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="rbsmrJhipsterApp.utilisateur.motdepasse" for="field_motdepasse">Motdepasse</label>
+            <input type="text" class="form-control" name="motdepasse" id="field_motdepasse"
+                [(ngModel)]="utilisateur.motdepasse" maxlength="300"/>
+            <div [hidden]="!(editForm.controls.motdepasse?.dirty && editForm.controls.motdepasse?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.motdepasse?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 300 }">
+                   This field cannot be longer than 300 characters.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="rbsmrJhipsterApp.utilisateur.isNew" for="field_isNew">Is New</label>
+            <input type="checkbox" class="form-control" name="isNew" id="field_isNew"
+                [(ngModel)]="utilisateur.isNew" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="rbsmrJhipsterApp.utilisateur.isActive" for="field_isActive">Is Active</label>
+            <input type="checkbox" class="form-control" name="isActive" id="field_isActive"
+                [(ngModel)]="utilisateur.isActive" />
+        </div>
+
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="rbsmrJhipsterApp.utilisateur.centre" for="field_centre">Centre</label>
+            <select class="form-control" id="field_centre" name="centre" [(ngModel)]="utilisateur.centreId" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="centreOption.id" *ngFor="let centreOption of centres; trackBy: trackCentreById">{{centreOption.nom}}</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="rbsmrJhipsterApp.utilisateur.role" for="field_role">Role</label>
+            <select class="form-control" id="field_role" name="role" [(ngModel)]="utilisateur.roleId" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="roleOption.id" *ngFor="let roleOption of roles; trackBy: trackRoleById">{{roleOption.id}}</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label jhiTranslate="rbsmrJhipsterApp.utilisateur.centres" for="field_centres">Centres</label>
+            <select class="form-control" id="field_centres" multiple name="centres" [(ngModel)]="utilisateur.centres">
+                <option [ngValue]="getSelected(utilisateur.centres, centreOption)" *ngFor="let centreOption of centres; trackBy: trackCentreById">{{centreOption.id}}</option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="clear()">
+            <span class="fa fa-ban"></span>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+            <span class="fa fa-save"></span>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

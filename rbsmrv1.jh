@@ -1,0 +1,156 @@
+
+
+entity Centre {
+	nom String required minlength(2) maxlength(25),
+    adresse String required minlength(2) maxlength(100),
+    tel String required minlength(10) maxlength(15)
+}
+
+entity DemandeChangement{
+	date ZonedDateTime,
+    contenu String  required minlength(2) maxlength(3000),
+    reponse String minlength(2) maxlength(3000),
+    etat EtatDemandeChangement,
+    lien String maxlength(100),
+    codeQuestion String maxlength(100)
+}
+
+entity Utilisateur{
+	nom String  maxlength(25),
+    prenom String maxlength(25),
+    email String maxlength(60),
+    tel String minlength(10) maxlength(15),
+    identificateur String maxlength(100),
+    motdepasse String maxlength(300),
+    isNew Boolean,
+    isActive Boolean
+}
+
+entity Role{
+	nom String
+}
+
+entity EtatFormulaire{
+	etat String,
+    dateValidation ZonedDateTime
+}
+
+entity Formulaire{
+	numero Integer,
+    indice Integer,
+    code String,
+    nom String,
+    conditionAttribut String,
+    conditionValeur String
+}
+
+entity TemplateFormulaire{
+	code String,
+    nom String
+}
+
+entity Patient{
+	initial String,
+    dateEnregistrement ZonedDateTime,
+    dateVisite ZonedDateTime,
+    biotherapie String,
+    sexe String
+}
+
+entity Reponse{
+	reponse String maxlength(10000),
+    DM Boolean
+}
+
+entity Question{
+	indice Integer,
+	codeQuestion String,
+    type TypeQuestion,
+    ennonce String,
+    dm Boolean,
+    choix String,
+    titre String,
+    addon String,
+    warning String,
+    pourTable Boolean,
+    ceil Integer,
+	conditionsAffichage String
+}
+
+entity Visite{
+	indice Integer,
+    code String,
+    nom String,
+    temps Integer
+}
+
+entity QuestionValidation{
+	type String,
+    val String,
+    minVal Double,
+    maxVal Double
+}
+
+entity PatientRemoveAudit{
+    date ZonedDateTime,
+    idPatient Integer,
+    idCentre Integer,
+    initial String,
+    raison String maxlength(1000)
+}
+
+entity ReponseNewAudit{
+    date ZonedDateTime,
+    reponseOld String maxlength(1000),
+    reponseNew String maxlength(1000),
+    raison String maxlength(1000),
+    raisonFileUrl String maxlength(200),
+    DMOld Boolean,
+    DMNew Boolean,
+    codeQuestion String,
+    codePatient String,
+    type String
+}
+
+enum TypeQuestion{
+	BOOLEAN, CHOIX_HOR, CHOIX_VER, TEXT, NUMBER, DATE, CHOIX_HOR_M, RANGE
+}
+
+enum EtatDemandeChangement{
+    NOUVELLE, ENVOYEE, RESOLUE
+}
+
+relationship ManyToOne {
+	DemandeChangement{medecin} to Utilisateur{demandeChangementsMedecin},
+    DemandeChangement{arc} to Utilisateur{demandeChangementsARC},
+    Utilisateur{centre(nom)} to Centre,
+    Utilisateur{role} to Role,
+    EtatFormulaire{formulaire} to Formulaire,
+    EtatFormulaire{patient} to Patient{etatFormulaires},
+    Patient{medecin} to Utilisateur,
+  	Reponse{patient} to Patient,
+    Reponse{question} to Question,
+    Question{templateFormulaire(nom)} to TemplateFormulaire{questions},
+	Formulaire{Visite(nom)} to Visite{formulaires}
+    Formulaire{templateFormulaire(nom)} to TemplateFormulaire,
+	Question{questionExterieur} to Question{questionsInterieurs},
+	PatientRemoveAudit{arc} to Utilisateur,
+	ReponseNewAudit{arc} to Utilisateur
+}
+
+relationship ManyToMany{
+	Utilisateur{centres} to Centre,
+    Question{validations} to QuestionValidation
+}
+
+
+
+// Set pagination options
+paginate * with pagination
+
+dto * with mapstruct
+
+// Set service options to all except few
+service all with serviceImpl
+// Set an angular suffix
+angularSuffix * with rbsmr

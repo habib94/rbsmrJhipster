@@ -1,0 +1,113 @@
+<form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+
+    <div class="modal-header">
+        <h4 class="modal-title" id="myQuestionLabel" jhiTranslate="rbsmrJhipsterApp.question.home.createOrEditLabel">Create or edit a Question</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                (click)="clear()">&times;</button>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" [hidden]="!question.id">
+            <label for="id" jhiTranslate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                   [(ngModel)]="question.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="rbsmrJhipsterApp.question.indice" for="field_indice">Indice</label>
+            <input type="number" class="form-control" name="indice" id="field_indice"
+                [(ngModel)]="question.indice" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="rbsmrJhipsterApp.question.codeQuestion" for="field_codeQuestion">Code Question</label>
+            <input type="text" class="form-control" name="codeQuestion" id="field_codeQuestion"
+                [(ngModel)]="question.codeQuestion" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="rbsmrJhipsterApp.question.type" for="field_type">Type</label>
+            <select class="form-control" name="type" [(ngModel)]="question.type" id="field_type" >
+                <option value="BOOLEAN">{{'rbsmrJhipsterApp.TypeQuestion.BOOLEAN' | translate}}</option>
+                <option value="CHOIX_HOR">{{'rbsmrJhipsterApp.TypeQuestion.CHOIX_HOR' | translate}}</option>
+                <option value="CHOIX_VER">{{'rbsmrJhipsterApp.TypeQuestion.CHOIX_VER' | translate}}</option>
+                <option value="TEXT">{{'rbsmrJhipsterApp.TypeQuestion.TEXT' | translate}}</option>
+                <option value="NUMBER">{{'rbsmrJhipsterApp.TypeQuestion.NUMBER' | translate}}</option>
+                <option value="DATE">{{'rbsmrJhipsterApp.TypeQuestion.DATE' | translate}}</option>
+                <option value="CHOIX_HOR_M">{{'rbsmrJhipsterApp.TypeQuestion.CHOIX_HOR_M' | translate}}</option>
+                <option value="RANGE">{{'rbsmrJhipsterApp.TypeQuestion.RANGE' | translate}}</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="rbsmrJhipsterApp.question.ennonce" for="field_ennonce">Ennonce</label>
+            <input type="text" class="form-control" name="ennonce" id="field_ennonce"
+                [(ngModel)]="question.ennonce" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="rbsmrJhipsterApp.question.dm" for="field_dm">Dm</label>
+            <input type="checkbox" class="form-control" name="dm" id="field_dm"
+                [(ngModel)]="question.dm" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="rbsmrJhipsterApp.question.choix" for="field_choix">Choix</label>
+            <input type="text" class="form-control" name="choix" id="field_choix"
+                [(ngModel)]="question.choix" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="rbsmrJhipsterApp.question.titre" for="field_titre">Titre</label>
+            <input type="text" class="form-control" name="titre" id="field_titre"
+                [(ngModel)]="question.titre" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="rbsmrJhipsterApp.question.addon" for="field_addon">Addon</label>
+            <input type="text" class="form-control" name="addon" id="field_addon"
+                [(ngModel)]="question.addon" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="rbsmrJhipsterApp.question.warning" for="field_warning">Warning</label>
+            <input type="text" class="form-control" name="warning" id="field_warning"
+                [(ngModel)]="question.warning" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="rbsmrJhipsterApp.question.pourTable" for="field_pourTable">Pour Table</label>
+            <input type="checkbox" class="form-control" name="pourTable" id="field_pourTable"
+                [(ngModel)]="question.pourTable" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="rbsmrJhipsterApp.question.ceil" for="field_ceil">Ceil</label>
+            <input type="number" class="form-control" name="ceil" id="field_ceil"
+                [(ngModel)]="question.ceil" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="rbsmrJhipsterApp.question.conditionsAffichage" for="field_conditionsAffichage">Conditions Affichage</label>
+            <input type="text" class="form-control" name="conditionsAffichage" id="field_conditionsAffichage"
+                [(ngModel)]="question.conditionsAffichage" />
+        </div>
+
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="rbsmrJhipsterApp.question.templateFormulaire" for="field_templateFormulaire">Template Formulaire</label>
+            <select class="form-control" id="field_templateFormulaire" name="templateFormulaire" [(ngModel)]="question.templateFormulaireId" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="templateFormulaireOption.id" *ngFor="let templateFormulaireOption of templateformulaires; trackBy: trackTemplateFormulaireById">{{templateFormulaireOption.nom}}</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="rbsmrJhipsterApp.question.questionExterieur" for="field_questionExterieur">Question Exterieur</label>
+            <select class="form-control" id="field_questionExterieur" name="questionExterieur" [(ngModel)]="question.questionExterieurId" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="questionOption.id" *ngFor="let questionOption of questions; trackBy: trackQuestionById">{{questionOption.id}}</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label jhiTranslate="rbsmrJhipsterApp.question.validations" for="field_validations">Validations</label>
+            <select class="form-control" id="field_validations" multiple name="validations" [(ngModel)]="question.validations">
+                <option [ngValue]="getSelected(question.validations, questionValidationOption)" *ngFor="let questionValidationOption of questionvalidations; trackBy: trackQuestionValidationById">{{questionValidationOption.id}}</option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="clear()">
+            <span class="fa fa-ban"></span>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+            <span class="fa fa-save"></span>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

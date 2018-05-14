@@ -1,0 +1,29 @@
+
+{
+    "rbsmrJhipsterApp": {
+        "demandeChangement" : {
+            "home": {
+                "title": "Demande Changements",
+                "createLabel": "Create a new Demande Changement",
+                "createOrEditLabel": "Create or edit a Demande Changement"
+            },
+            "created": "A new Demande Changement is created with identifier {{ param }}",
+            "updated": "A Demande Changement is updated with identifier {{ param }}",
+            "deleted": "A Demande Changement is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Demande Changement {{ id }}?"
+            },
+            "detail": {
+                "title": "Demande Changement"
+            },
+            "date": "Date",
+            "contenu": "Contenu",
+            "reponse": "Reponse",
+            "etat": "Etat",
+            "lien": "Lien",
+            "codeQuestion": "Code Question",
+            "medecin": "Medecin",
+            "arc": "Arc"
+        }
+    }
+}

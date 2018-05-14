@@ -1,0 +1,29 @@
+
+{
+    "rbsmrJhipsterApp": {
+        "formulaire" : {
+            "home": {
+                "title": "Formulaires",
+                "createLabel": "Créer un nouveau Formulaire",
+                "createOrEditLabel": "Créer ou éditer un Formulaire"
+            },
+            "created": "Un nouveau Formulaire a été créé avec l'identifiant {{ param }}",
+            "updated": "Le Formulaire avec l'identifiant {{ param }} a été mis à jour",
+            "deleted": "Le Formulaire avec l'identifiant {{ param }} a été supprimé",
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer le Formulaire {{ id }} ?"
+            },
+            "detail": {
+                "title": "Formulaire"
+            },
+            "numero": "Numero",
+            "indice": "Indice",
+            "code": "Code",
+            "nom": "Nom",
+            "conditionAttribut": "Condition Attribut",
+            "conditionValeur": "Condition Valeur",
+            "visite": "Visite",
+            "templateFormulaire": "Template Formulaire"
+        }
+    }
+}

@@ -1,0 +1,27 @@
+
+{
+    "rbsmrJhipsterApp": {
+        "patientRemoveAudit" : {
+            "home": {
+                "title": "PatientRemoveAudits",
+                "createLabel": "Créer un nouveau Patient Remove Audit",
+                "createOrEditLabel": "Créer ou éditer un Patient Remove Audit"
+            },
+            "created": "Un nouveau Patient Remove Audit a été créé avec l'identifiant {{ param }}",
+            "updated": "Le Patient Remove Audit avec l'identifiant {{ param }} a été mis à jour",
+            "deleted": "Le Patient Remove Audit avec l'identifiant {{ param }} a été supprimé",
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer le Patient Remove Audit {{ id }} ?"
+            },
+            "detail": {
+                "title": "Patient Remove Audit"
+            },
+            "date": "Date",
+            "idPatient": "Id Patient",
+            "idCentre": "Id Centre",
+            "initial": "Initial",
+            "raison": "Raison",
+            "arc": "Arc"
+        }
+    }
+}

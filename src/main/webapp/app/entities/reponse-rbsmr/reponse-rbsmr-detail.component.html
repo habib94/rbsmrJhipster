@@ -1,0 +1,42 @@
+
+<div *ngIf="reponse">
+    <h2><span jhiTranslate="rbsmrJhipsterApp.reponse.detail.title">Reponse</span> {{reponse.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="rbsmrJhipsterApp.reponse.reponse">Reponse</span></dt>
+        <dd>
+            <span>{{reponse.reponse}}</span>
+        </dd>
+        <dt><span jhiTranslate="rbsmrJhipsterApp.reponse.dM">D M</span></dt>
+        <dd>
+            <span>{{reponse.dM}}</span>
+        </dd>
+        <dt><span jhiTranslate="rbsmrJhipsterApp.reponse.patient">Patient</span></dt>
+        <dd>
+            <div *ngIf="reponse.patientId">
+                <a [routerLink]="['/patient-rbsmr', reponse.patientId]">{{reponse.patientId}}</a>
+            </div>
+        </dd>
+        <dt><span jhiTranslate="rbsmrJhipsterApp.reponse.question">Question</span></dt>
+        <dd>
+            <div *ngIf="reponse.questionId">
+                <a [routerLink]="['/question-rbsmr', reponse.questionId]">{{reponse.questionId}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'reponse-rbsmr/'+ reponse.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

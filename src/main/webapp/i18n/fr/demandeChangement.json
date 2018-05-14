@@ -1,0 +1,29 @@
+
+{
+    "rbsmrJhipsterApp": {
+        "demandeChangement" : {
+            "home": {
+                "title": "DemandeChangements",
+                "createLabel": "Créer un nouveau Demande Changement",
+                "createOrEditLabel": "Créer ou éditer un Demande Changement"
+            },
+            "created": "Un nouveau Demande Changement a été créé avec l'identifiant {{ param }}",
+            "updated": "Le Demande Changement avec l'identifiant {{ param }} a été mis à jour",
+            "deleted": "Le Demande Changement avec l'identifiant {{ param }} a été supprimé",
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer le Demande Changement {{ id }} ?"
+            },
+            "detail": {
+                "title": "Demande Changement"
+            },
+            "date": "Date",
+            "contenu": "Contenu",
+            "reponse": "Reponse",
+            "etat": "Etat",
+            "lien": "Lien",
+            "codeQuestion": "Code Question",
+            "medecin": "Medecin",
+            "arc": "Arc"
+        }
+    }
+}

@@ -1,0 +1,48 @@
+
+<div *ngIf="patient">
+    <h2><span jhiTranslate="rbsmrJhipsterApp.patient.detail.title">Patient</span> {{patient.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="rbsmrJhipsterApp.patient.initial">Initial</span></dt>
+        <dd>
+            <span>{{patient.initial}}</span>
+        </dd>
+        <dt><span jhiTranslate="rbsmrJhipsterApp.patient.dateEnregistrement">Date Enregistrement</span></dt>
+        <dd>
+            <span>{{patient.dateEnregistrement | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="rbsmrJhipsterApp.patient.dateVisite">Date Visite</span></dt>
+        <dd>
+            <span>{{patient.dateVisite | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="rbsmrJhipsterApp.patient.biotherapie">Biotherapie</span></dt>
+        <dd>
+            <span>{{patient.biotherapie}}</span>
+        </dd>
+        <dt><span jhiTranslate="rbsmrJhipsterApp.patient.sexe">Sexe</span></dt>
+        <dd>
+            <span>{{patient.sexe}}</span>
+        </dd>
+        <dt><span jhiTranslate="rbsmrJhipsterApp.patient.medecin">Medecin</span></dt>
+        <dd>
+            <div *ngIf="patient.medecinId">
+                <a [routerLink]="['/utilisateur-rbsmr', patient.medecinId]">{{patient.medecinId}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'patient-rbsmr/'+ patient.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

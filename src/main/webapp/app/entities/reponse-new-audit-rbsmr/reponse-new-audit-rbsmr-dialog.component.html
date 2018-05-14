@@ -1,0 +1,108 @@
+<form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+
+    <div class="modal-header">
+        <h4 class="modal-title" id="myReponseNewAuditLabel" jhiTranslate="rbsmrJhipsterApp.reponseNewAudit.home.createOrEditLabel">Create or edit a Reponse New Audit</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                (click)="clear()">&times;</button>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" [hidden]="!reponseNewAudit.id">
+            <label for="id" jhiTranslate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                   [(ngModel)]="reponseNewAudit.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="rbsmrJhipsterApp.reponseNewAudit.date" for="field_date">Date</label>
+            <div class="d-flex">
+                <input id="field_date" type="datetime-local" class="form-control" name="date" [(ngModel)]="reponseNewAudit.date"
+                />
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="rbsmrJhipsterApp.reponseNewAudit.reponseOld" for="field_reponseOld">Reponse Old</label>
+            <input type="text" class="form-control" name="reponseOld" id="field_reponseOld"
+                [(ngModel)]="reponseNewAudit.reponseOld" maxlength="1000"/>
+            <div [hidden]="!(editForm.controls.reponseOld?.dirty && editForm.controls.reponseOld?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.reponseOld?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 1000 }">
+                   This field cannot be longer than 1000 characters.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="rbsmrJhipsterApp.reponseNewAudit.reponseNew" for="field_reponseNew">Reponse New</label>
+            <input type="text" class="form-control" name="reponseNew" id="field_reponseNew"
+                [(ngModel)]="reponseNewAudit.reponseNew" maxlength="1000"/>
+            <div [hidden]="!(editForm.controls.reponseNew?.dirty && editForm.controls.reponseNew?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.reponseNew?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 1000 }">
+                   This field cannot be longer than 1000 characters.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="rbsmrJhipsterApp.reponseNewAudit.raison" for="field_raison">Raison</label>
+            <input type="text" class="form-control" name="raison" id="field_raison"
+                [(ngModel)]="reponseNewAudit.raison" maxlength="1000"/>
+            <div [hidden]="!(editForm.controls.raison?.dirty && editForm.controls.raison?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.raison?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 1000 }">
+                   This field cannot be longer than 1000 characters.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="rbsmrJhipsterApp.reponseNewAudit.raisonFileUrl" for="field_raisonFileUrl">Raison File Url</label>
+            <input type="text" class="form-control" name="raisonFileUrl" id="field_raisonFileUrl"
+                [(ngModel)]="reponseNewAudit.raisonFileUrl" maxlength="200"/>
+            <div [hidden]="!(editForm.controls.raisonFileUrl?.dirty && editForm.controls.raisonFileUrl?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.raisonFileUrl?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 200 }">
+                   This field cannot be longer than 200 characters.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="rbsmrJhipsterApp.reponseNewAudit.dMOld" for="field_dMOld">D M Old</label>
+            <input type="checkbox" class="form-control" name="dMOld" id="field_dMOld"
+                [(ngModel)]="reponseNewAudit.dMOld" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="rbsmrJhipsterApp.reponseNewAudit.dMNew" for="field_dMNew">D M New</label>
+            <input type="checkbox" class="form-control" name="dMNew" id="field_dMNew"
+                [(ngModel)]="reponseNewAudit.dMNew" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="rbsmrJhipsterApp.reponseNewAudit.codeQuestion" for="field_codeQuestion">Code Question</label>
+            <input type="text" class="form-control" name="codeQuestion" id="field_codeQuestion"
+                [(ngModel)]="reponseNewAudit.codeQuestion" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="rbsmrJhipsterApp.reponseNewAudit.codePatient" for="field_codePatient">Code Patient</label>
+            <input type="text" class="form-control" name="codePatient" id="field_codePatient"
+                [(ngModel)]="reponseNewAudit.codePatient" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="rbsmrJhipsterApp.reponseNewAudit.type" for="field_type">Type</label>
+            <input type="text" class="form-control" name="type" id="field_type"
+                [(ngModel)]="reponseNewAudit.type" />
+        </div>
+
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="rbsmrJhipsterApp.reponseNewAudit.arc" for="field_arc">Arc</label>
+            <select class="form-control" id="field_arc" name="arc" [(ngModel)]="reponseNewAudit.arcId" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="utilisateurOption.id" *ngFor="let utilisateurOption of utilisateurs; trackBy: trackUtilisateurById">{{utilisateurOption.id}}</option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="clear()">
+            <span class="fa fa-ban"></span>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+            <span class="fa fa-save"></span>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

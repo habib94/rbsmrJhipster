@@ -1,0 +1,69 @@
+<form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+
+    <div class="modal-header">
+        <h4 class="modal-title" id="myFormulaireLabel" jhiTranslate="rbsmrJhipsterApp.formulaire.home.createOrEditLabel">Create or edit a Formulaire</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                (click)="clear()">&times;</button>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" [hidden]="!formulaire.id">
+            <label for="id" jhiTranslate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                   [(ngModel)]="formulaire.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="rbsmrJhipsterApp.formulaire.numero" for="field_numero">Numero</label>
+            <input type="number" class="form-control" name="numero" id="field_numero"
+                [(ngModel)]="formulaire.numero" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="rbsmrJhipsterApp.formulaire.indice" for="field_indice">Indice</label>
+            <input type="number" class="form-control" name="indice" id="field_indice"
+                [(ngModel)]="formulaire.indice" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="rbsmrJhipsterApp.formulaire.code" for="field_code">Code</label>
+            <input type="text" class="form-control" name="code" id="field_code"
+                [(ngModel)]="formulaire.code" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="rbsmrJhipsterApp.formulaire.nom" for="field_nom">Nom</label>
+            <input type="text" class="form-control" name="nom" id="field_nom"
+                [(ngModel)]="formulaire.nom" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="rbsmrJhipsterApp.formulaire.conditionAttribut" for="field_conditionAttribut">Condition Attribut</label>
+            <input type="text" class="form-control" name="conditionAttribut" id="field_conditionAttribut"
+                [(ngModel)]="formulaire.conditionAttribut" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="rbsmrJhipsterApp.formulaire.conditionValeur" for="field_conditionValeur">Condition Valeur</label>
+            <input type="text" class="form-control" name="conditionValeur" id="field_conditionValeur"
+                [(ngModel)]="formulaire.conditionValeur" />
+        </div>
+
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="rbsmrJhipsterApp.formulaire.visite" for="field_visite">Visite</label>
+            <select class="form-control" id="field_visite" name="visite" [(ngModel)]="formulaire.visiteId" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="visiteOption.id" *ngFor="let visiteOption of visites; trackBy: trackVisiteById">{{visiteOption.nom}}</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="rbsmrJhipsterApp.formulaire.templateFormulaire" for="field_templateFormulaire">Template Formulaire</label>
+            <select class="form-control" id="field_templateFormulaire" name="templateFormulaire" [(ngModel)]="formulaire.templateFormulaireId" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="templateFormulaireOption.id" *ngFor="let templateFormulaireOption of templateformulaires; trackBy: trackTemplateFormulaireById">{{templateFormulaireOption.nom}}</option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="clear()">
+            <span class="fa fa-ban"></span>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+            <span class="fa fa-save"></span>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

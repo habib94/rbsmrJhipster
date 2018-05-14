@@ -1,0 +1,72 @@
+
+<div *ngIf="utilisateur">
+    <h2><span jhiTranslate="rbsmrJhipsterApp.utilisateur.detail.title">Utilisateur</span> {{utilisateur.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="rbsmrJhipsterApp.utilisateur.nom">Nom</span></dt>
+        <dd>
+            <span>{{utilisateur.nom}}</span>
+        </dd>
+        <dt><span jhiTranslate="rbsmrJhipsterApp.utilisateur.prenom">Prenom</span></dt>
+        <dd>
+            <span>{{utilisateur.prenom}}</span>
+        </dd>
+        <dt><span jhiTranslate="rbsmrJhipsterApp.utilisateur.email">Email</span></dt>
+        <dd>
+            <span>{{utilisateur.email}}</span>
+        </dd>
+        <dt><span jhiTranslate="rbsmrJhipsterApp.utilisateur.tel">Tel</span></dt>
+        <dd>
+            <span>{{utilisateur.tel}}</span>
+        </dd>
+        <dt><span jhiTranslate="rbsmrJhipsterApp.utilisateur.identificateur">Identificateur</span></dt>
+        <dd>
+            <span>{{utilisateur.identificateur}}</span>
+        </dd>
+        <dt><span jhiTranslate="rbsmrJhipsterApp.utilisateur.motdepasse">Motdepasse</span></dt>
+        <dd>
+            <span>{{utilisateur.motdepasse}}</span>
+        </dd>
+        <dt><span jhiTranslate="rbsmrJhipsterApp.utilisateur.isNew">Is New</span></dt>
+        <dd>
+            <span>{{utilisateur.isNew}}</span>
+        </dd>
+        <dt><span jhiTranslate="rbsmrJhipsterApp.utilisateur.isActive">Is Active</span></dt>
+        <dd>
+            <span>{{utilisateur.isActive}}</span>
+        </dd>
+        <dt><span jhiTranslate="rbsmrJhipsterApp.utilisateur.centre">Centre</span></dt>
+        <dd>
+            <div *ngIf="utilisateur.centreId">
+                <a [routerLink]="['/centre-rbsmr', utilisateur.centreId]">{{utilisateur.centreNom}}</a>
+            </div>
+        </dd>
+        <dt><span jhiTranslate="rbsmrJhipsterApp.utilisateur.role">Role</span></dt>
+        <dd>
+            <div *ngIf="utilisateur.roleId">
+                <a [routerLink]="['/role-rbsmr', utilisateur.roleId]">{{utilisateur.roleId}}</a>
+            </div>
+        </dd>
+        <dt><span jhiTranslate="rbsmrJhipsterApp.utilisateur.centres">Centres</span></dt>
+        <dd>
+            <span *ngFor="let centres of utilisateur.centres; let last = last">
+                <a [routerLink]="['/centre-rbsmr', centres?.id ]">{{centres.id}}</a>{{last ? '' : ', '}}
+            </span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'utilisateur-rbsmr/'+ utilisateur.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

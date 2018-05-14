@@ -1,0 +1,68 @@
+<div>
+    <h2>
+        <span jhiTranslate="rbsmrJhipsterApp.templateFormulaire.home.title">Template Formulaires</span>
+        <button class="btn btn-primary float-right jh-create-entity create-template-formulaire-rbsmr" [routerLink]="['/', { outlets: { popup: ['template-formulaire-rbsmr-new'] } }]">
+            <span class="fa fa-plus"></span>
+            <span  jhiTranslate="rbsmrJhipsterApp.templateFormulaire.home.createLabel">
+            Create new Template Formulaire
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="templateFormulaires">
+        <table class="table table-striped">
+            <thead>
+            <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
+            <th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="code"><span jhiTranslate="rbsmrJhipsterApp.templateFormulaire.code">Code</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="nom"><span jhiTranslate="rbsmrJhipsterApp.templateFormulaire.nom">Nom</span> <span class="fa fa-sort"></span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let templateFormulaire of templateFormulaires ;trackBy: trackId">
+                <td><a [routerLink]="['../template-formulaire-rbsmr', templateFormulaire.id ]">{{templateFormulaire.id}}</a></td>
+                <td>{{templateFormulaire.code}}</td>
+                <td>{{templateFormulaire.nom}}</td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../template-formulaire-rbsmr', templateFormulaire.id ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'template-formulaire-rbsmr/'+ templateFormulaire.id + '/edit'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'template-formulaire-rbsmr/'+ templateFormulaire.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div *ngIf="templateFormulaires && templateFormulaires.length">
+        <div class="row justify-content-center">
+            <jhi-item-count [page]="page" [total]="queryCount" [maxSize]="5" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+        </div>
+        <div class="row justify-content-center">
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="page" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage(page)"></ngb-pagination>
+        </div>
+    </div>
+</div>

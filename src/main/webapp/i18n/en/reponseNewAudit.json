@@ -1,0 +1,32 @@
+
+{
+    "rbsmrJhipsterApp": {
+        "reponseNewAudit" : {
+            "home": {
+                "title": "Reponse New Audits",
+                "createLabel": "Create a new Reponse New Audit",
+                "createOrEditLabel": "Create or edit a Reponse New Audit"
+            },
+            "created": "A new Reponse New Audit is created with identifier {{ param }}",
+            "updated": "A Reponse New Audit is updated with identifier {{ param }}",
+            "deleted": "A Reponse New Audit is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Reponse New Audit {{ id }}?"
+            },
+            "detail": {
+                "title": "Reponse New Audit"
+            },
+            "date": "Date",
+            "reponseOld": "Reponse Old",
+            "reponseNew": "Reponse New",
+            "raison": "Raison",
+            "raisonFileUrl": "Raison File Url",
+            "dMOld": "D M Old",
+            "dMNew": "D M New",
+            "codeQuestion": "Code Question",
+            "codePatient": "Code Patient",
+            "type": "Type",
+            "arc": "Arc"
+        }
+    }
+}

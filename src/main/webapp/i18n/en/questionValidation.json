@@ -1,0 +1,25 @@
+
+{
+    "rbsmrJhipsterApp": {
+        "questionValidation" : {
+            "home": {
+                "title": "Question Validations",
+                "createLabel": "Create a new Question Validation",
+                "createOrEditLabel": "Create or edit a Question Validation"
+            },
+            "created": "A new Question Validation is created with identifier {{ param }}",
+            "updated": "A Question Validation is updated with identifier {{ param }}",
+            "deleted": "A Question Validation is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Question Validation {{ id }}?"
+            },
+            "detail": {
+                "title": "Question Validation"
+            },
+            "type": "Type",
+            "val": "Val",
+            "minVal": "Min Val",
+            "maxVal": "Max Val"
+        }
+    }
+}
