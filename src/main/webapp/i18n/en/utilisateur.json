@@ -1,0 +1,34 @@
+
+{
+    "rbsmrJhipsterApp": {
+        "utilisateur" : {
+            "home": {
+                "title": "Utilisateurs",
+                "createLabel": "Create a new Utilisateur",
+                "createOrEditLabel": "Create or edit a Utilisateur"
+            },
+            "created": "A new Utilisateur is created with identifier {{ param }}",
+            "updated": "A Utilisateur is updated with identifier {{ param }}",
+            "deleted": "A Utilisateur is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Utilisateur {{ id }}?"
+            },
+            "detail": {
+                "title": "Utilisateur"
+            },
+            "nom": "Nom",
+            "prenom": "Prenom",
+            "email": "Email",
+            "tel": "Tel",
+            "identificateur": "Identificateur",
+            "motdepasse": "Motdepasse",
+            "isNew": "Is New",
+            "isActive": "Is Active",
+            "centre": "Centre",
+            "role": "Role",
+            "centres": "Centres",
+            "demandeChangementsMedecin": "Demande Changements Medecin",
+            "demandeChangementsARC": "Demande Changements ARC"
+        }
+    }
+}

@@ -1,0 +1,36 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "formulaires",
+            "otherEntityName": "formulaire",
+            "otherEntityRelationshipName": "visite"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "indice",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "code",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "nom",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "temps",
+            "fieldType": "Integer"
+        }
+    ],
+    "changelogDate": "20180514101955",
+    "entityTableName": "visite",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "angularJSSuffix": "rbsmr"
+}

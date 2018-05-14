@@ -1,0 +1,58 @@
+
+<div *ngIf="demandeChangement">
+    <h2><span jhiTranslate="rbsmrJhipsterApp.demandeChangement.detail.title">Demande Changement</span> {{demandeChangement.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="rbsmrJhipsterApp.demandeChangement.date">Date</span></dt>
+        <dd>
+            <span>{{demandeChangement.date | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="rbsmrJhipsterApp.demandeChangement.contenu">Contenu</span></dt>
+        <dd>
+            <span>{{demandeChangement.contenu}}</span>
+        </dd>
+        <dt><span jhiTranslate="rbsmrJhipsterApp.demandeChangement.reponse">Reponse</span></dt>
+        <dd>
+            <span>{{demandeChangement.reponse}}</span>
+        </dd>
+        <dt><span jhiTranslate="rbsmrJhipsterApp.demandeChangement.etat">Etat</span></dt>
+        <dd>
+            <span jhiTranslate="{{'rbsmrJhipsterApp.EtatDemandeChangement.' + demandeChangement.etat}}">{{demandeChangement.etat}}</span>
+        </dd>
+        <dt><span jhiTranslate="rbsmrJhipsterApp.demandeChangement.lien">Lien</span></dt>
+        <dd>
+            <span>{{demandeChangement.lien}}</span>
+        </dd>
+        <dt><span jhiTranslate="rbsmrJhipsterApp.demandeChangement.codeQuestion">Code Question</span></dt>
+        <dd>
+            <span>{{demandeChangement.codeQuestion}}</span>
+        </dd>
+        <dt><span jhiTranslate="rbsmrJhipsterApp.demandeChangement.medecin">Medecin</span></dt>
+        <dd>
+            <div *ngIf="demandeChangement.medecinId">
+                <a [routerLink]="['/utilisateur-rbsmr', demandeChangement.medecinId]">{{demandeChangement.medecinId}}</a>
+            </div>
+        </dd>
+        <dt><span jhiTranslate="rbsmrJhipsterApp.demandeChangement.arc">Arc</span></dt>
+        <dd>
+            <div *ngIf="demandeChangement.arcId">
+                <a [routerLink]="['/utilisateur-rbsmr', demandeChangement.arcId]">{{demandeChangement.arcId}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'demande-changement-rbsmr/'+ demandeChangement.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

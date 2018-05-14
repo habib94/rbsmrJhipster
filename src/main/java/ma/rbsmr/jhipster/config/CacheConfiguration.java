@@ -38,6 +38,28 @@ public class CacheConfiguration {
             cm.createCache(ma.rbsmr.jhipster.domain.User.class.getName(), jcacheConfiguration);
             cm.createCache(ma.rbsmr.jhipster.domain.Authority.class.getName(), jcacheConfiguration);
             cm.createCache(ma.rbsmr.jhipster.domain.User.class.getName() + ".authorities", jcacheConfiguration);
+            cm.createCache(ma.rbsmr.jhipster.domain.Centre.class.getName(), jcacheConfiguration);
+            cm.createCache(ma.rbsmr.jhipster.domain.DemandeChangement.class.getName(), jcacheConfiguration);
+            cm.createCache(ma.rbsmr.jhipster.domain.Utilisateur.class.getName(), jcacheConfiguration);
+            cm.createCache(ma.rbsmr.jhipster.domain.Utilisateur.class.getName() + ".centres", jcacheConfiguration);
+            cm.createCache(ma.rbsmr.jhipster.domain.Utilisateur.class.getName() + ".demandeChangementsMedecins", jcacheConfiguration);
+            cm.createCache(ma.rbsmr.jhipster.domain.Utilisateur.class.getName() + ".demandeChangementsARCS", jcacheConfiguration);
+            cm.createCache(ma.rbsmr.jhipster.domain.Role.class.getName(), jcacheConfiguration);
+            cm.createCache(ma.rbsmr.jhipster.domain.EtatFormulaire.class.getName(), jcacheConfiguration);
+            cm.createCache(ma.rbsmr.jhipster.domain.Formulaire.class.getName(), jcacheConfiguration);
+            cm.createCache(ma.rbsmr.jhipster.domain.TemplateFormulaire.class.getName(), jcacheConfiguration);
+            cm.createCache(ma.rbsmr.jhipster.domain.TemplateFormulaire.class.getName() + ".questions", jcacheConfiguration);
+            cm.createCache(ma.rbsmr.jhipster.domain.Patient.class.getName(), jcacheConfiguration);
+            cm.createCache(ma.rbsmr.jhipster.domain.Patient.class.getName() + ".etatFormulaires", jcacheConfiguration);
+            cm.createCache(ma.rbsmr.jhipster.domain.Reponse.class.getName(), jcacheConfiguration);
+            cm.createCache(ma.rbsmr.jhipster.domain.Question.class.getName(), jcacheConfiguration);
+            cm.createCache(ma.rbsmr.jhipster.domain.Question.class.getName() + ".validations", jcacheConfiguration);
+            cm.createCache(ma.rbsmr.jhipster.domain.Question.class.getName() + ".questionsInterieurs", jcacheConfiguration);
+            cm.createCache(ma.rbsmr.jhipster.domain.Visite.class.getName(), jcacheConfiguration);
+            cm.createCache(ma.rbsmr.jhipster.domain.Visite.class.getName() + ".formulaires", jcacheConfiguration);
+            cm.createCache(ma.rbsmr.jhipster.domain.QuestionValidation.class.getName(), jcacheConfiguration);
+            cm.createCache(ma.rbsmr.jhipster.domain.PatientRemoveAudit.class.getName(), jcacheConfiguration);
+            cm.createCache(ma.rbsmr.jhipster.domain.ReponseNewAudit.class.getName(), jcacheConfiguration);
             // jhipster-needle-ehcache-add-entry
         };
     }

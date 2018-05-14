@@ -7,6 +7,20 @@
             "jhipster-needle-menu-add-element": "JHipster will add additional menu entries here (do not translate!)",
             "entities": {
                 "main": "Entités",
+                "centreRbsmr": "Centre",
+                "demandeChangementRbsmr": "Demande Changement",
+                "utilisateurRbsmr": "Utilisateur",
+                "roleRbsmr": "Role",
+                "etatFormulaireRbsmr": "Etat Formulaire",
+                "formulaireRbsmr": "Formulaire",
+                "templateFormulaireRbsmr": "Template Formulaire",
+                "patientRbsmr": "Patient",
+                "reponseRbsmr": "Reponse",
+                "questionRbsmr": "Question",
+                "visiteRbsmr": "Visite",
+                "questionValidationRbsmr": "Question Validation",
+                "patientRemoveAuditRbsmr": "Patient Remove Audit",
+                "reponseNewAuditRbsmr": "Reponse New Audit",
                 "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
             },
             "account": {

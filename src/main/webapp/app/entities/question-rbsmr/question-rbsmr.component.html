@@ -1,0 +1,100 @@
+<div>
+    <h2>
+        <span jhiTranslate="rbsmrJhipsterApp.question.home.title">Questions</span>
+        <button class="btn btn-primary float-right jh-create-entity create-question-rbsmr" [routerLink]="['/', { outlets: { popup: ['question-rbsmr-new'] } }]">
+            <span class="fa fa-plus"></span>
+            <span  jhiTranslate="rbsmrJhipsterApp.question.home.createLabel">
+            Create new Question
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="questions">
+        <table class="table table-striped">
+            <thead>
+            <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
+            <th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="indice"><span jhiTranslate="rbsmrJhipsterApp.question.indice">Indice</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="codeQuestion"><span jhiTranslate="rbsmrJhipsterApp.question.codeQuestion">Code Question</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="type"><span jhiTranslate="rbsmrJhipsterApp.question.type">Type</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="ennonce"><span jhiTranslate="rbsmrJhipsterApp.question.ennonce">Ennonce</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="dm"><span jhiTranslate="rbsmrJhipsterApp.question.dm">Dm</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="choix"><span jhiTranslate="rbsmrJhipsterApp.question.choix">Choix</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="titre"><span jhiTranslate="rbsmrJhipsterApp.question.titre">Titre</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="addon"><span jhiTranslate="rbsmrJhipsterApp.question.addon">Addon</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="warning"><span jhiTranslate="rbsmrJhipsterApp.question.warning">Warning</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="pourTable"><span jhiTranslate="rbsmrJhipsterApp.question.pourTable">Pour Table</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="ceil"><span jhiTranslate="rbsmrJhipsterApp.question.ceil">Ceil</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="conditionsAffichage"><span jhiTranslate="rbsmrJhipsterApp.question.conditionsAffichage">Conditions Affichage</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="templateFormulaireNom"><span jhiTranslate="rbsmrJhipsterApp.question.templateFormulaire">Template Formulaire</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="questionExterieurId"><span jhiTranslate="rbsmrJhipsterApp.question.questionExterieur">Question Exterieur</span> <span class="fa fa-sort"></span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let question of questions ;trackBy: trackId">
+                <td><a [routerLink]="['../question-rbsmr', question.id ]">{{question.id}}</a></td>
+                <td>{{question.indice}}</td>
+                <td>{{question.codeQuestion}}</td>
+                <td jhiTranslate="{{'rbsmrJhipsterApp.TypeQuestion.' + question.type}}">{{question.type}}</td>
+                <td>{{question.ennonce}}</td>
+                <td>{{question.dm}}</td>
+                <td>{{question.choix}}</td>
+                <td>{{question.titre}}</td>
+                <td>{{question.addon}}</td>
+                <td>{{question.warning}}</td>
+                <td>{{question.pourTable}}</td>
+                <td>{{question.ceil}}</td>
+                <td>{{question.conditionsAffichage}}</td>
+                <td>
+                    <div *ngIf="question.templateFormulaireId">
+                        <a [routerLink]="['../template-formulaire-rbsmr', question.templateFormulaireId  ]" >{{question.templateFormulaireNom}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="question.questionExterieurId">
+                        <a [routerLink]="['../question-rbsmr', question.questionExterieurId  ]" >{{question.questionExterieurId}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../question-rbsmr', question.id ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'question-rbsmr/'+ question.id + '/edit'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'question-rbsmr/'+ question.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div *ngIf="questions && questions.length">
+        <div class="row justify-content-center">
+            <jhi-item-count [page]="page" [total]="queryCount" [maxSize]="5" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+        </div>
+        <div class="row justify-content-center">
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="page" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage(page)"></ngb-pagination>
+        </div>
+    </div>
+</div>

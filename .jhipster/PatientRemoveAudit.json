@@ -1,0 +1,44 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "arc",
+            "otherEntityName": "utilisateur",
+            "otherEntityField": "id"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "date",
+            "fieldType": "ZonedDateTime"
+        },
+        {
+            "fieldName": "idPatient",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "idCentre",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "initial",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "raison",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 1000
+        }
+    ],
+    "changelogDate": "20180514101957",
+    "entityTableName": "patient_remove_audit",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "angularJSSuffix": "rbsmr"
+}

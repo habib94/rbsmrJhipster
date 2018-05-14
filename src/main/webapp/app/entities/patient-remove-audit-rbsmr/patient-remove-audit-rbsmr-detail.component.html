@@ -1,0 +1,48 @@
+
+<div *ngIf="patientRemoveAudit">
+    <h2><span jhiTranslate="rbsmrJhipsterApp.patientRemoveAudit.detail.title">Patient Remove Audit</span> {{patientRemoveAudit.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="rbsmrJhipsterApp.patientRemoveAudit.date">Date</span></dt>
+        <dd>
+            <span>{{patientRemoveAudit.date | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="rbsmrJhipsterApp.patientRemoveAudit.idPatient">Id Patient</span></dt>
+        <dd>
+            <span>{{patientRemoveAudit.idPatient}}</span>
+        </dd>
+        <dt><span jhiTranslate="rbsmrJhipsterApp.patientRemoveAudit.idCentre">Id Centre</span></dt>
+        <dd>
+            <span>{{patientRemoveAudit.idCentre}}</span>
+        </dd>
+        <dt><span jhiTranslate="rbsmrJhipsterApp.patientRemoveAudit.initial">Initial</span></dt>
+        <dd>
+            <span>{{patientRemoveAudit.initial}}</span>
+        </dd>
+        <dt><span jhiTranslate="rbsmrJhipsterApp.patientRemoveAudit.raison">Raison</span></dt>
+        <dd>
+            <span>{{patientRemoveAudit.raison}}</span>
+        </dd>
+        <dt><span jhiTranslate="rbsmrJhipsterApp.patientRemoveAudit.arc">Arc</span></dt>
+        <dd>
+            <div *ngIf="patientRemoveAudit.arcId">
+                <a [routerLink]="['/utilisateur-rbsmr', patientRemoveAudit.arcId]">{{patientRemoveAudit.arcId}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'patient-remove-audit-rbsmr/'+ patientRemoveAudit.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

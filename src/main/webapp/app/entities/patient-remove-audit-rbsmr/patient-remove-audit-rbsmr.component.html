@@ -1,0 +1,80 @@
+<div>
+    <h2>
+        <span jhiTranslate="rbsmrJhipsterApp.patientRemoveAudit.home.title">Patient Remove Audits</span>
+        <button class="btn btn-primary float-right jh-create-entity create-patient-remove-audit-rbsmr" [routerLink]="['/', { outlets: { popup: ['patient-remove-audit-rbsmr-new'] } }]">
+            <span class="fa fa-plus"></span>
+            <span  jhiTranslate="rbsmrJhipsterApp.patientRemoveAudit.home.createLabel">
+            Create new Patient Remove Audit
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="patientRemoveAudits">
+        <table class="table table-striped">
+            <thead>
+            <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
+            <th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="date"><span jhiTranslate="rbsmrJhipsterApp.patientRemoveAudit.date">Date</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="idPatient"><span jhiTranslate="rbsmrJhipsterApp.patientRemoveAudit.idPatient">Id Patient</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="idCentre"><span jhiTranslate="rbsmrJhipsterApp.patientRemoveAudit.idCentre">Id Centre</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="initial"><span jhiTranslate="rbsmrJhipsterApp.patientRemoveAudit.initial">Initial</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="raison"><span jhiTranslate="rbsmrJhipsterApp.patientRemoveAudit.raison">Raison</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="arcId"><span jhiTranslate="rbsmrJhipsterApp.patientRemoveAudit.arc">Arc</span> <span class="fa fa-sort"></span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let patientRemoveAudit of patientRemoveAudits ;trackBy: trackId">
+                <td><a [routerLink]="['../patient-remove-audit-rbsmr', patientRemoveAudit.id ]">{{patientRemoveAudit.id}}</a></td>
+                <td>{{patientRemoveAudit.date | date:'medium'}}</td>
+                <td>{{patientRemoveAudit.idPatient}}</td>
+                <td>{{patientRemoveAudit.idCentre}}</td>
+                <td>{{patientRemoveAudit.initial}}</td>
+                <td>{{patientRemoveAudit.raison}}</td>
+                <td>
+                    <div *ngIf="patientRemoveAudit.arcId">
+                        <a [routerLink]="['../utilisateur-rbsmr', patientRemoveAudit.arcId  ]" >{{patientRemoveAudit.arcId}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../patient-remove-audit-rbsmr', patientRemoveAudit.id ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'patient-remove-audit-rbsmr/'+ patientRemoveAudit.id + '/edit'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'patient-remove-audit-rbsmr/'+ patientRemoveAudit.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div *ngIf="patientRemoveAudits && patientRemoveAudits.length">
+        <div class="row justify-content-center">
+            <jhi-item-count [page]="page" [total]="queryCount" [maxSize]="5" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+        </div>
+        <div class="row justify-content-center">
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="page" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage(page)"></ngb-pagination>
+        </div>
+    </div>
+</div>

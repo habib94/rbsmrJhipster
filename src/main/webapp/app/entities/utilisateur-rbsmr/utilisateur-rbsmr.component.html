@@ -1,0 +1,92 @@
+<div>
+    <h2>
+        <span jhiTranslate="rbsmrJhipsterApp.utilisateur.home.title">Utilisateurs</span>
+        <button class="btn btn-primary float-right jh-create-entity create-utilisateur-rbsmr" [routerLink]="['/', { outlets: { popup: ['utilisateur-rbsmr-new'] } }]">
+            <span class="fa fa-plus"></span>
+            <span  jhiTranslate="rbsmrJhipsterApp.utilisateur.home.createLabel">
+            Create new Utilisateur
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="utilisateurs">
+        <table class="table table-striped">
+            <thead>
+            <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
+            <th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="nom"><span jhiTranslate="rbsmrJhipsterApp.utilisateur.nom">Nom</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="prenom"><span jhiTranslate="rbsmrJhipsterApp.utilisateur.prenom">Prenom</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="email"><span jhiTranslate="rbsmrJhipsterApp.utilisateur.email">Email</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="tel"><span jhiTranslate="rbsmrJhipsterApp.utilisateur.tel">Tel</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="identificateur"><span jhiTranslate="rbsmrJhipsterApp.utilisateur.identificateur">Identificateur</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="motdepasse"><span jhiTranslate="rbsmrJhipsterApp.utilisateur.motdepasse">Motdepasse</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="isNew"><span jhiTranslate="rbsmrJhipsterApp.utilisateur.isNew">Is New</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="isActive"><span jhiTranslate="rbsmrJhipsterApp.utilisateur.isActive">Is Active</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="centreNom"><span jhiTranslate="rbsmrJhipsterApp.utilisateur.centre">Centre</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="roleId"><span jhiTranslate="rbsmrJhipsterApp.utilisateur.role">Role</span> <span class="fa fa-sort"></span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let utilisateur of utilisateurs ;trackBy: trackId">
+                <td><a [routerLink]="['../utilisateur-rbsmr', utilisateur.id ]">{{utilisateur.id}}</a></td>
+                <td>{{utilisateur.nom}}</td>
+                <td>{{utilisateur.prenom}}</td>
+                <td>{{utilisateur.email}}</td>
+                <td>{{utilisateur.tel}}</td>
+                <td>{{utilisateur.identificateur}}</td>
+                <td>{{utilisateur.motdepasse}}</td>
+                <td>{{utilisateur.isNew}}</td>
+                <td>{{utilisateur.isActive}}</td>
+                <td>
+                    <div *ngIf="utilisateur.centreId">
+                        <a [routerLink]="['../centre-rbsmr', utilisateur.centreId  ]" >{{utilisateur.centreNom}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="utilisateur.roleId">
+                        <a [routerLink]="['../role-rbsmr', utilisateur.roleId  ]" >{{utilisateur.roleId}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../utilisateur-rbsmr', utilisateur.id ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'utilisateur-rbsmr/'+ utilisateur.id + '/edit'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'utilisateur-rbsmr/'+ utilisateur.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div *ngIf="utilisateurs && utilisateurs.length">
+        <div class="row justify-content-center">
+            <jhi-item-count [page]="page" [total]="queryCount" [maxSize]="5" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+        </div>
+        <div class="row justify-content-center">
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="page" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage(page)"></ngb-pagination>
+        </div>
+    </div>
+</div>

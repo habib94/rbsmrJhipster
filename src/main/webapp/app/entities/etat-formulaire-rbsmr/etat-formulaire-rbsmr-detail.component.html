@@ -1,0 +1,42 @@
+
+<div *ngIf="etatFormulaire">
+    <h2><span jhiTranslate="rbsmrJhipsterApp.etatFormulaire.detail.title">Etat Formulaire</span> {{etatFormulaire.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="rbsmrJhipsterApp.etatFormulaire.etat">Etat</span></dt>
+        <dd>
+            <span>{{etatFormulaire.etat}}</span>
+        </dd>
+        <dt><span jhiTranslate="rbsmrJhipsterApp.etatFormulaire.dateValidation">Date Validation</span></dt>
+        <dd>
+            <span>{{etatFormulaire.dateValidation | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="rbsmrJhipsterApp.etatFormulaire.formulaire">Formulaire</span></dt>
+        <dd>
+            <div *ngIf="etatFormulaire.formulaireId">
+                <a [routerLink]="['/formulaire-rbsmr', etatFormulaire.formulaireId]">{{etatFormulaire.formulaireId}}</a>
+            </div>
+        </dd>
+        <dt><span jhiTranslate="rbsmrJhipsterApp.etatFormulaire.patient">Patient</span></dt>
+        <dd>
+            <div *ngIf="etatFormulaire.patientId">
+                <a [routerLink]="['/patient-rbsmr', etatFormulaire.patientId]">{{etatFormulaire.patientId}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'etat-formulaire-rbsmr/'+ etatFormulaire.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

@@ -1,0 +1,88 @@
+
+<div *ngIf="question">
+    <h2><span jhiTranslate="rbsmrJhipsterApp.question.detail.title">Question</span> {{question.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="rbsmrJhipsterApp.question.indice">Indice</span></dt>
+        <dd>
+            <span>{{question.indice}}</span>
+        </dd>
+        <dt><span jhiTranslate="rbsmrJhipsterApp.question.codeQuestion">Code Question</span></dt>
+        <dd>
+            <span>{{question.codeQuestion}}</span>
+        </dd>
+        <dt><span jhiTranslate="rbsmrJhipsterApp.question.type">Type</span></dt>
+        <dd>
+            <span jhiTranslate="{{'rbsmrJhipsterApp.TypeQuestion.' + question.type}}">{{question.type}}</span>
+        </dd>
+        <dt><span jhiTranslate="rbsmrJhipsterApp.question.ennonce">Ennonce</span></dt>
+        <dd>
+            <span>{{question.ennonce}}</span>
+        </dd>
+        <dt><span jhiTranslate="rbsmrJhipsterApp.question.dm">Dm</span></dt>
+        <dd>
+            <span>{{question.dm}}</span>
+        </dd>
+        <dt><span jhiTranslate="rbsmrJhipsterApp.question.choix">Choix</span></dt>
+        <dd>
+            <span>{{question.choix}}</span>
+        </dd>
+        <dt><span jhiTranslate="rbsmrJhipsterApp.question.titre">Titre</span></dt>
+        <dd>
+            <span>{{question.titre}}</span>
+        </dd>
+        <dt><span jhiTranslate="rbsmrJhipsterApp.question.addon">Addon</span></dt>
+        <dd>
+            <span>{{question.addon}}</span>
+        </dd>
+        <dt><span jhiTranslate="rbsmrJhipsterApp.question.warning">Warning</span></dt>
+        <dd>
+            <span>{{question.warning}}</span>
+        </dd>
+        <dt><span jhiTranslate="rbsmrJhipsterApp.question.pourTable">Pour Table</span></dt>
+        <dd>
+            <span>{{question.pourTable}}</span>
+        </dd>
+        <dt><span jhiTranslate="rbsmrJhipsterApp.question.ceil">Ceil</span></dt>
+        <dd>
+            <span>{{question.ceil}}</span>
+        </dd>
+        <dt><span jhiTranslate="rbsmrJhipsterApp.question.conditionsAffichage">Conditions Affichage</span></dt>
+        <dd>
+            <span>{{question.conditionsAffichage}}</span>
+        </dd>
+        <dt><span jhiTranslate="rbsmrJhipsterApp.question.templateFormulaire">Template Formulaire</span></dt>
+        <dd>
+            <div *ngIf="question.templateFormulaireId">
+                <a [routerLink]="['/template-formulaire-rbsmr', question.templateFormulaireId]">{{question.templateFormulaireNom}}</a>
+            </div>
+        </dd>
+        <dt><span jhiTranslate="rbsmrJhipsterApp.question.questionExterieur">Question Exterieur</span></dt>
+        <dd>
+            <div *ngIf="question.questionExterieurId">
+                <a [routerLink]="['/question-rbsmr', question.questionExterieurId]">{{question.questionExterieurId}}</a>
+            </div>
+        </dd>
+        <dt><span jhiTranslate="rbsmrJhipsterApp.question.validations">Validations</span></dt>
+        <dd>
+            <span *ngFor="let validations of question.validations; let last = last">
+                <a [routerLink]="['/question-validation-rbsmr', validations?.id ]">{{validations.id}}</a>{{last ? '' : ', '}}
+            </span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'question-rbsmr/'+ question.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

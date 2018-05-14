@@ -1,0 +1,29 @@
+{
+    "fluentMethods": true,
+    "relationships": [],
+    "fields": [
+        {
+            "fieldName": "type",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "val",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "minVal",
+            "fieldType": "Double"
+        },
+        {
+            "fieldName": "maxVal",
+            "fieldType": "Double"
+        }
+    ],
+    "changelogDate": "20180514101956",
+    "entityTableName": "question_validation",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "angularJSSuffix": "rbsmr"
+}

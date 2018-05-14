@@ -1,0 +1,32 @@
+
+{
+    "rbsmrJhipsterApp": {
+        "reponseNewAudit" : {
+            "home": {
+                "title": "ReponseNewAudits",
+                "createLabel": "Créer un nouveau Reponse New Audit",
+                "createOrEditLabel": "Créer ou éditer un Reponse New Audit"
+            },
+            "created": "Un nouveau Reponse New Audit a été créé avec l'identifiant {{ param }}",
+            "updated": "Le Reponse New Audit avec l'identifiant {{ param }} a été mis à jour",
+            "deleted": "Le Reponse New Audit avec l'identifiant {{ param }} a été supprimé",
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer le Reponse New Audit {{ id }} ?"
+            },
+            "detail": {
+                "title": "Reponse New Audit"
+            },
+            "date": "Date",
+            "reponseOld": "Reponse Old",
+            "reponseNew": "Reponse New",
+            "raison": "Raison",
+            "raisonFileUrl": "Raison File Url",
+            "dMOld": "D M Old",
+            "dMNew": "D M New",
+            "codeQuestion": "Code Question",
+            "codePatient": "Code Patient",
+            "type": "Type",
+            "arc": "Arc"
+        }
+    }
+}

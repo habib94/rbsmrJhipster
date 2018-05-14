@@ -1,0 +1,38 @@
+
+<div *ngIf="questionValidation">
+    <h2><span jhiTranslate="rbsmrJhipsterApp.questionValidation.detail.title">Question Validation</span> {{questionValidation.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="rbsmrJhipsterApp.questionValidation.type">Type</span></dt>
+        <dd>
+            <span>{{questionValidation.type}}</span>
+        </dd>
+        <dt><span jhiTranslate="rbsmrJhipsterApp.questionValidation.val">Val</span></dt>
+        <dd>
+            <span>{{questionValidation.val}}</span>
+        </dd>
+        <dt><span jhiTranslate="rbsmrJhipsterApp.questionValidation.minVal">Min Val</span></dt>
+        <dd>
+            <span>{{questionValidation.minVal}}</span>
+        </dd>
+        <dt><span jhiTranslate="rbsmrJhipsterApp.questionValidation.maxVal">Max Val</span></dt>
+        <dd>
+            <span>{{questionValidation.maxVal}}</span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'question-validation-rbsmr/'+ questionValidation.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

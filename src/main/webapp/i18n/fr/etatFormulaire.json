@@ -1,0 +1,25 @@
+
+{
+    "rbsmrJhipsterApp": {
+        "etatFormulaire" : {
+            "home": {
+                "title": "EtatFormulaires",
+                "createLabel": "Créer un nouveau Etat Formulaire",
+                "createOrEditLabel": "Créer ou éditer un Etat Formulaire"
+            },
+            "created": "Un nouveau Etat Formulaire a été créé avec l'identifiant {{ param }}",
+            "updated": "Le Etat Formulaire avec l'identifiant {{ param }} a été mis à jour",
+            "deleted": "Le Etat Formulaire avec l'identifiant {{ param }} a été supprimé",
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer le Etat Formulaire {{ id }} ?"
+            },
+            "detail": {
+                "title": "Etat Formulaire"
+            },
+            "etat": "Etat",
+            "dateValidation": "Date Validation",
+            "formulaire": "Formulaire",
+            "patient": "Patient"
+        }
+    }
+}

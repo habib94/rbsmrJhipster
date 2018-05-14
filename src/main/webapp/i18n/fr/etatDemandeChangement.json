@@ -1,0 +1,10 @@
+{
+    "rbsmrJhipsterApp": {
+        "EtatDemandeChangement" : {
+            "null": "",
+            "NOUVELLE": "NOUVELLE",
+            "ENVOYEE": "ENVOYEE",
+            "RESOLUE": "RESOLUE"
+        }
+    }
+}

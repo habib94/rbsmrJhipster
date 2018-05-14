@@ -1,0 +1,37 @@
+
+{
+    "rbsmrJhipsterApp": {
+        "question" : {
+            "home": {
+                "title": "Questions",
+                "createLabel": "Create a new Question",
+                "createOrEditLabel": "Create or edit a Question"
+            },
+            "created": "A new Question is created with identifier {{ param }}",
+            "updated": "A Question is updated with identifier {{ param }}",
+            "deleted": "A Question is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Question {{ id }}?"
+            },
+            "detail": {
+                "title": "Question"
+            },
+            "indice": "Indice",
+            "codeQuestion": "Code Question",
+            "type": "Type",
+            "ennonce": "Ennonce",
+            "dm": "Dm",
+            "choix": "Choix",
+            "titre": "Titre",
+            "addon": "Addon",
+            "warning": "Warning",
+            "pourTable": "Pour Table",
+            "ceil": "Ceil",
+            "conditionsAffichage": "Conditions Affichage",
+            "templateFormulaire": "Template Formulaire",
+            "questionExterieur": "Question Exterieur",
+            "validations": "Validations",
+            "questionsInterieurs": "Questions Interieurs"
+        }
+    }
+}

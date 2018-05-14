@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+    <!--
+        Added the constraints for entity EtatFormulaire.
+    -->
+    <changeSet id="20180514101949-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="formulaire_id"
+                                 baseTableName="etat_formulaire"
+                                 constraintName="fk_etat_formulaire_formulaire_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="formulaire"/>
+
+        <addForeignKeyConstraint baseColumnNames="patient_id"
+                                 baseTableName="etat_formulaire"
+                                 constraintName="fk_etat_formulaire_patient_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="patient"/>
+
+    </changeSet>
+</databaseChangeLog>

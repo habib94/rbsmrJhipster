@@ -1,0 +1,24 @@
+
+{
+    "rbsmrJhipsterApp": {
+        "templateFormulaire" : {
+            "home": {
+                "title": "Template Formulaires",
+                "createLabel": "Create a new Template Formulaire",
+                "createOrEditLabel": "Create or edit a Template Formulaire"
+            },
+            "created": "A new Template Formulaire is created with identifier {{ param }}",
+            "updated": "A Template Formulaire is updated with identifier {{ param }}",
+            "deleted": "A Template Formulaire is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Template Formulaire {{ id }}?"
+            },
+            "detail": {
+                "title": "Template Formulaire"
+            },
+            "code": "Code",
+            "nom": "Nom",
+            "questions": "Questions"
+        }
+    }
+}

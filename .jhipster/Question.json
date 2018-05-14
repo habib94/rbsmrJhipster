@@ -1,0 +1,89 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "templateFormulaire",
+            "otherEntityName": "templateFormulaire",
+            "otherEntityField": "nom"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "questionExterieur",
+            "otherEntityName": "question",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-many",
+            "otherEntityRelationshipName": "",
+            "relationshipName": "validations",
+            "otherEntityName": "questionValidation",
+            "otherEntityField": "id",
+            "ownerSide": true
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "questionsInterieurs",
+            "otherEntityName": "question",
+            "otherEntityRelationshipName": "questionExterieur"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "indice",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "codeQuestion",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "type",
+            "fieldType": "TypeQuestion",
+            "fieldValues": "BOOLEAN,CHOIX_HOR,CHOIX_VER,TEXT,NUMBER,DATE,CHOIX_HOR_M,RANGE"
+        },
+        {
+            "fieldName": "ennonce",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "dm",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "choix",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "titre",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "addon",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "warning",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "pourTable",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "ceil",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "conditionsAffichage",
+            "fieldType": "String"
+        }
+    ],
+    "changelogDate": "20180514101954",
+    "entityTableName": "question",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "angularJSSuffix": "rbsmr"
+}

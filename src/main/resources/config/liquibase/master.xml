@@ -5,6 +5,29 @@
     xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
 
     <include file="config/liquibase/changelog/00000000000000_initial_schema.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180514101945_added_entity_Centre.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180514101946_added_entity_DemandeChangement.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180514101947_added_entity_Utilisateur.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180514101948_added_entity_Role.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180514101949_added_entity_EtatFormulaire.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180514101950_added_entity_Formulaire.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180514101951_added_entity_TemplateFormulaire.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180514101952_added_entity_Patient.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180514101953_added_entity_Reponse.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180514101954_added_entity_Question.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180514101955_added_entity_Visite.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180514101956_added_entity_QuestionValidation.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180514101957_added_entity_PatientRemoveAudit.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180514101958_added_entity_ReponseNewAudit.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-changelog - JHipster will add liquibase changelogs here -->
+    <include file="config/liquibase/changelog/20180514101946_added_entity_constraints_DemandeChangement.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180514101947_added_entity_constraints_Utilisateur.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180514101949_added_entity_constraints_EtatFormulaire.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180514101950_added_entity_constraints_Formulaire.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180514101952_added_entity_constraints_Patient.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180514101953_added_entity_constraints_Reponse.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180514101954_added_entity_constraints_Question.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180514101957_added_entity_constraints_PatientRemoveAudit.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180514101958_added_entity_constraints_ReponseNewAudit.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-constraints-changelog - JHipster will add liquibase constraints changelogs here -->
 </databaseChangeLog>

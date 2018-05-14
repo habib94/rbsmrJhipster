@@ -1,0 +1,15 @@
+{
+    "rbsmrJhipsterApp": {
+        "TypeQuestion" : {
+            "null": "",
+            "BOOLEAN": "BOOLEAN",
+            "CHOIX_HOR": "CHOIX_HOR",
+            "CHOIX_VER": "CHOIX_VER",
+            "TEXT": "TEXT",
+            "NUMBER": "NUMBER",
+            "DATE": "DATE",
+            "CHOIX_HOR_M": "CHOIX_HOR_M",
+            "RANGE": "RANGE"
+        }
+    }
+}

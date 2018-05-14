@@ -1,0 +1,46 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "medecin",
+            "otherEntityName": "utilisateur",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "etatFormulaires",
+            "otherEntityName": "etatFormulaire",
+            "otherEntityRelationshipName": "patient"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "initial",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "dateEnregistrement",
+            "fieldType": "ZonedDateTime"
+        },
+        {
+            "fieldName": "dateVisite",
+            "fieldType": "ZonedDateTime"
+        },
+        {
+            "fieldName": "biotherapie",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "sexe",
+            "fieldType": "String"
+        }
+    ],
+    "changelogDate": "20180514101952",
+    "entityTableName": "patient",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "angularJSSuffix": "rbsmr"
+}

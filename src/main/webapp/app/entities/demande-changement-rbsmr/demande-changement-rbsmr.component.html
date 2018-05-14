@@ -1,0 +1,88 @@
+<div>
+    <h2>
+        <span jhiTranslate="rbsmrJhipsterApp.demandeChangement.home.title">Demande Changements</span>
+        <button class="btn btn-primary float-right jh-create-entity create-demande-changement-rbsmr" [routerLink]="['/', { outlets: { popup: ['demande-changement-rbsmr-new'] } }]">
+            <span class="fa fa-plus"></span>
+            <span  jhiTranslate="rbsmrJhipsterApp.demandeChangement.home.createLabel">
+            Create new Demande Changement
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="demandeChangements">
+        <table class="table table-striped">
+            <thead>
+            <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
+            <th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="date"><span jhiTranslate="rbsmrJhipsterApp.demandeChangement.date">Date</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="contenu"><span jhiTranslate="rbsmrJhipsterApp.demandeChangement.contenu">Contenu</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="reponse"><span jhiTranslate="rbsmrJhipsterApp.demandeChangement.reponse">Reponse</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="etat"><span jhiTranslate="rbsmrJhipsterApp.demandeChangement.etat">Etat</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="lien"><span jhiTranslate="rbsmrJhipsterApp.demandeChangement.lien">Lien</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="codeQuestion"><span jhiTranslate="rbsmrJhipsterApp.demandeChangement.codeQuestion">Code Question</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="medecinId"><span jhiTranslate="rbsmrJhipsterApp.demandeChangement.medecin">Medecin</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="arcId"><span jhiTranslate="rbsmrJhipsterApp.demandeChangement.arc">Arc</span> <span class="fa fa-sort"></span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let demandeChangement of demandeChangements ;trackBy: trackId">
+                <td><a [routerLink]="['../demande-changement-rbsmr', demandeChangement.id ]">{{demandeChangement.id}}</a></td>
+                <td>{{demandeChangement.date | date:'medium'}}</td>
+                <td>{{demandeChangement.contenu}}</td>
+                <td>{{demandeChangement.reponse}}</td>
+                <td jhiTranslate="{{'rbsmrJhipsterApp.EtatDemandeChangement.' + demandeChangement.etat}}">{{demandeChangement.etat}}</td>
+                <td>{{demandeChangement.lien}}</td>
+                <td>{{demandeChangement.codeQuestion}}</td>
+                <td>
+                    <div *ngIf="demandeChangement.medecinId">
+                        <a [routerLink]="['../utilisateur-rbsmr', demandeChangement.medecinId  ]" >{{demandeChangement.medecinId}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="demandeChangement.arcId">
+                        <a [routerLink]="['../utilisateur-rbsmr', demandeChangement.arcId  ]" >{{demandeChangement.arcId}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../demande-changement-rbsmr', demandeChangement.id ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'demande-changement-rbsmr/'+ demandeChangement.id + '/edit'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'demande-changement-rbsmr/'+ demandeChangement.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div *ngIf="demandeChangements && demandeChangements.length">
+        <div class="row justify-content-center">
+            <jhi-item-count [page]="page" [total]="queryCount" [maxSize]="5" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+        </div>
+        <div class="row justify-content-center">
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="page" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage(page)"></ngb-pagination>
+        </div>
+    </div>
+</div>

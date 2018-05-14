@@ -1,0 +1,51 @@
+<form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+
+    <div class="modal-header">
+        <h4 class="modal-title" id="myEtatFormulaireLabel" jhiTranslate="rbsmrJhipsterApp.etatFormulaire.home.createOrEditLabel">Create or edit a Etat Formulaire</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                (click)="clear()">&times;</button>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" [hidden]="!etatFormulaire.id">
+            <label for="id" jhiTranslate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                   [(ngModel)]="etatFormulaire.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="rbsmrJhipsterApp.etatFormulaire.etat" for="field_etat">Etat</label>
+            <input type="text" class="form-control" name="etat" id="field_etat"
+                [(ngModel)]="etatFormulaire.etat" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="rbsmrJhipsterApp.etatFormulaire.dateValidation" for="field_dateValidation">Date Validation</label>
+            <div class="d-flex">
+                <input id="field_dateValidation" type="datetime-local" class="form-control" name="dateValidation" [(ngModel)]="etatFormulaire.dateValidation"
+                />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="rbsmrJhipsterApp.etatFormulaire.formulaire" for="field_formulaire">Formulaire</label>
+            <select class="form-control" id="field_formulaire" name="formulaire" [(ngModel)]="etatFormulaire.formulaireId" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="formulaireOption.id" *ngFor="let formulaireOption of formulaires; trackBy: trackFormulaireById">{{formulaireOption.id}}</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="rbsmrJhipsterApp.etatFormulaire.patient" for="field_patient">Patient</label>
+            <select class="form-control" id="field_patient" name="patient" [(ngModel)]="etatFormulaire.patientId" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="patientOption.id" *ngFor="let patientOption of patients; trackBy: trackPatientById">{{patientOption.id}}</option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="clear()">
+            <span class="fa fa-ban"></span>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+            <span class="fa fa-save"></span>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

@@ -1,0 +1,68 @@
+
+<div *ngIf="reponseNewAudit">
+    <h2><span jhiTranslate="rbsmrJhipsterApp.reponseNewAudit.detail.title">Reponse New Audit</span> {{reponseNewAudit.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="rbsmrJhipsterApp.reponseNewAudit.date">Date</span></dt>
+        <dd>
+            <span>{{reponseNewAudit.date | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="rbsmrJhipsterApp.reponseNewAudit.reponseOld">Reponse Old</span></dt>
+        <dd>
+            <span>{{reponseNewAudit.reponseOld}}</span>
+        </dd>
+        <dt><span jhiTranslate="rbsmrJhipsterApp.reponseNewAudit.reponseNew">Reponse New</span></dt>
+        <dd>
+            <span>{{reponseNewAudit.reponseNew}}</span>
+        </dd>
+        <dt><span jhiTranslate="rbsmrJhipsterApp.reponseNewAudit.raison">Raison</span></dt>
+        <dd>
+            <span>{{reponseNewAudit.raison}}</span>
+        </dd>
+        <dt><span jhiTranslate="rbsmrJhipsterApp.reponseNewAudit.raisonFileUrl">Raison File Url</span></dt>
+        <dd>
+            <span>{{reponseNewAudit.raisonFileUrl}}</span>
+        </dd>
+        <dt><span jhiTranslate="rbsmrJhipsterApp.reponseNewAudit.dMOld">D M Old</span></dt>
+        <dd>
+            <span>{{reponseNewAudit.dMOld}}</span>
+        </dd>
+        <dt><span jhiTranslate="rbsmrJhipsterApp.reponseNewAudit.dMNew">D M New</span></dt>
+        <dd>
+            <span>{{reponseNewAudit.dMNew}}</span>
+        </dd>
+        <dt><span jhiTranslate="rbsmrJhipsterApp.reponseNewAudit.codeQuestion">Code Question</span></dt>
+        <dd>
+            <span>{{reponseNewAudit.codeQuestion}}</span>
+        </dd>
+        <dt><span jhiTranslate="rbsmrJhipsterApp.reponseNewAudit.codePatient">Code Patient</span></dt>
+        <dd>
+            <span>{{reponseNewAudit.codePatient}}</span>
+        </dd>
+        <dt><span jhiTranslate="rbsmrJhipsterApp.reponseNewAudit.type">Type</span></dt>
+        <dd>
+            <span>{{reponseNewAudit.type}}</span>
+        </dd>
+        <dt><span jhiTranslate="rbsmrJhipsterApp.reponseNewAudit.arc">Arc</span></dt>
+        <dd>
+            <div *ngIf="reponseNewAudit.arcId">
+                <a [routerLink]="['/utilisateur-rbsmr', reponseNewAudit.arcId]">{{reponseNewAudit.arcId}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'reponse-new-audit-rbsmr/'+ reponseNewAudit.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>
