@@ -3,6 +3,7 @@ package ma.rbsmr.jhipster.service.impl;
 import ma.rbsmr.jhipster.service.FormulaireService;
 import ma.rbsmr.jhipster.domain.Formulaire;
 import ma.rbsmr.jhipster.repository.FormulaireRepository;
+import ma.rbsmr.jhipster.service.dto.FormulaireCompletDTO;
 import ma.rbsmr.jhipster.service.dto.FormulaireDTO;
 import ma.rbsmr.jhipster.service.mapper.FormulaireMapper;
 import org.slf4j.Logger;
@@ -82,5 +83,12 @@ public class FormulaireServiceImpl implements FormulaireService {
     public void delete(Long id) {
         log.debug("Request to delete Formulaire : {}", id);
         formulaireRepository.delete(id);
+    }
+
+    @Override
+    public FormulaireCompletDTO findOneByCode(String code) {
+        log.debug("Request to get Formulaire : {}", code);
+        Formulaire formulaire = formulaireRepository.findOneByCode(code);
+        return fo
     }
 }

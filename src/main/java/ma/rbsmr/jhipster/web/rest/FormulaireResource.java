@@ -2,6 +2,7 @@ package ma.rbsmr.jhipster.web.rest;
 
 import com.codahale.metrics.annotation.Timed;
 import ma.rbsmr.jhipster.service.FormulaireService;
+import ma.rbsmr.jhipster.service.dto.FormulaireCompletDTO;
 import ma.rbsmr.jhipster.web.rest.errors.BadRequestAlertException;
 import ma.rbsmr.jhipster.web.rest.util.HeaderUtil;
 import ma.rbsmr.jhipster.web.rest.util.PaginationUtil;
@@ -102,11 +103,11 @@ public class FormulaireResource {
      * @param id the id of the formulaireDTO to retrieve
      * @return the ResponseEntity with status 200 (OK) and with body the formulaireDTO, or with status 404 (Not Found)
      */
-    @GetMapping("/formulaires/{id}")
+    @GetMapping("/formulaires/{code}")
     @Timed
-    public ResponseEntity<FormulaireDTO> getFormulaire(@PathVariable Long id) {
-        log.debug("REST request to get Formulaire : {}", id);
-        FormulaireDTO formulaireDTO = formulaireService.findOne(id);
+    public ResponseEntity<FormulaireCompletDTO> getFormulaire(@PathVariable String code) {
+        log.debug("REST request to get Formulaire : {}", code);
+        FormulaireCompletDTO formulaireDTO = formulaireService.findOneByCode(code);
         return ResponseUtil.wrapOrNotFound(Optional.ofNullable(formulaireDTO));
     }
 

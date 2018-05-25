@@ -1,5 +1,6 @@
 package ma.rbsmr.jhipster.service;
 
+import ma.rbsmr.jhipster.service.dto.FormulaireCompletDTO;
 import ma.rbsmr.jhipster.service.dto.FormulaireDTO;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -32,6 +33,14 @@ public interface FormulaireService {
      * @return the entity
      */
     FormulaireDTO findOne(Long id);
+
+    /**
+     * Get the "id" formulaire.
+     *
+     * @param code the id of the entity
+     * @return the entity
+     */
+    FormulaireCompletDTO findOneByCode(String code);
 
     /**
      * Delete the "id" formulaire.
