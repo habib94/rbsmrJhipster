@@ -27,9 +27,7 @@ public class FormulaireCompletDTO implements Serializable {
 
     private String visiteNom;
 
-    private Long templateFormulaireId;
-
-    private String templateFormulaireNom;
+    private TemplateFormulaireCompletDTO templateFormulaire;
 
     public Long getId() {
         return id;
@@ -103,20 +101,13 @@ public class FormulaireCompletDTO implements Serializable {
         this.visiteNom = visiteNom;
     }
 
-    public Long getTemplateFormulaireId() {
-        return templateFormulaireId;
+
+    public TemplateFormulaireCompletDTO getTemplateFormulaire() {
+        return templateFormulaire;
     }
 
-    public void setTemplateFormulaireId(Long templateFormulaireId) {
-        this.templateFormulaireId = templateFormulaireId;
-    }
-
-    public String getTemplateFormulaireNom() {
-        return templateFormulaireNom;
-    }
-
-    public void setTemplateFormulaireNom(String templateFormulaireNom) {
-        this.templateFormulaireNom = templateFormulaireNom;
+    public void setTemplateFormulaire(TemplateFormulaireCompletDTO templateFormulaire) {
+        this.templateFormulaire = templateFormulaire;
     }
 
     @Override

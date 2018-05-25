@@ -5,6 +5,7 @@ import ma.rbsmr.jhipster.domain.Formulaire;
 import ma.rbsmr.jhipster.repository.FormulaireRepository;
 import ma.rbsmr.jhipster.service.dto.FormulaireCompletDTO;
 import ma.rbsmr.jhipster.service.dto.FormulaireDTO;
+import ma.rbsmr.jhipster.service.mapper.FormulaireCompletMapper;
 import ma.rbsmr.jhipster.service.mapper.FormulaireMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -27,9 +28,12 @@ public class FormulaireServiceImpl implements FormulaireService {
 
     private final FormulaireMapper formulaireMapper;
 
-    public FormulaireServiceImpl(FormulaireRepository formulaireRepository, FormulaireMapper formulaireMapper) {
+    private final FormulaireCompletMapper formulaireCompletMapper;
+
+    public FormulaireServiceImpl(FormulaireRepository formulaireRepository, FormulaireMapper formulaireMapper,FormulaireCompletMapper formulaireCompletMapper) {
         this.formulaireRepository = formulaireRepository;
         this.formulaireMapper = formulaireMapper;
+        this.formulaireCompletMapper = formulaireCompletMapper;
     }
 
     /**
@@ -89,6 +93,6 @@ public class FormulaireServiceImpl implements FormulaireService {
     public FormulaireCompletDTO findOneByCode(String code) {
         log.debug("Request to get Formulaire : {}", code);
         Formulaire formulaire = formulaireRepository.findOneByCode(code);
-        return fo
+        return formulaireCompletMapper.toDto(formulaire);
     }
 }

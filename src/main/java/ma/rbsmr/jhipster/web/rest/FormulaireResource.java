@@ -100,7 +100,7 @@ public class FormulaireResource {
     /**
      * GET  /formulaires/:id : get the "id" formulaire.
      *
-     * @param id the id of the formulaireDTO to retrieve
+     * @param code the id of the formulaireDTO to retrieve
      * @return the ResponseEntity with status 200 (OK) and with body the formulaireDTO, or with status 404 (Not Found)
      */
     @GetMapping("/formulaires/{code}")
