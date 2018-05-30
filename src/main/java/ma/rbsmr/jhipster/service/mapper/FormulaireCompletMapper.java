@@ -9,10 +9,12 @@ import org.mapstruct.Mapping;
 /**
  * Mapper for the entity Formulaire and its DTO FormulaireDTO.
  */
-@Mapper(componentModel = "spring", uses = {TemplateFormulaireCompletMapper.class})
+@Mapper(componentModel = "spring", uses = {QuestionMapper.class})
 public interface FormulaireCompletMapper extends EntityMapper<FormulaireCompletDTO, Formulaire> {
 
-
+    @Mapping(source = "visite.id", target = "visiteId")
+    @Mapping(source = "visite.nom", target = "visiteNom")
+    @Mapping(source = "templateFormulaire.questions", target = "questions")
     FormulaireCompletDTO toDto(Formulaire formulaire);
 
 

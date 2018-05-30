@@ -5,10 +5,12 @@ import {
 
 } from './';
 import {RbsmrJhipsterSharedModule} from '../shared';
+import {FormulaireMedecinPopupRoute, FormulaireMedecinRoute} from './formulaire-complet/formulaire-medecin.route';
+import {FormulaireMedecinComponent} from './formulaire-complet/formulaire-medecin.component';
 
 const ENTITY_STATES = [
-    ...formulaireRoute,
-    ...formulairePopupRoute,
+    ...FormulaireMedecinRoute,
+    ...FormulaireMedecinPopupRoute,
 ];
 
 @NgModule({
@@ -17,7 +19,7 @@ const ENTITY_STATES = [
         RouterModule.forChild(ENTITY_STATES)
     ],
     declarations: [
-
+        FormulaireMedecinComponent
     ],
     entryComponents: [
 

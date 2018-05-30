@@ -15,6 +15,7 @@ import {
     Principal,
     HasAnyAuthorityDirective,
 } from './';
+import {FormulaireCompletService} from './services/formulaire-complet.service';
 
 @NgModule({
     imports: [
@@ -26,6 +27,7 @@ import {
         HasAnyAuthorityDirective
     ],
     providers: [
+        FormulaireCompletService,
         LoginService,
         LoginModalService,
         AccountService,

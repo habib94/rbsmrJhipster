@@ -27,6 +27,7 @@ import {
     ActiveMenuDirective,
     ErrorComponent
 } from './layouts';
+import {ProfileMedecinModule} from './profile-medecin/profile-medecin.module';
 
 @NgModule({
     imports: [
@@ -38,6 +39,7 @@ import {
         RbsmrJhipsterAdminModule,
         RbsmrJhipsterAccountModule,
         RbsmrJhipsterEntityModule,
+        ProfileMedecinModule
         // jhipster-needle-angular-add-module JHipster will add new module here
     ],
     declarations: [

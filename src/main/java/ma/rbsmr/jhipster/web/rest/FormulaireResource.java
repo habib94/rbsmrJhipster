@@ -97,13 +97,28 @@ public class FormulaireResource {
         return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
     }
 
+
     /**
      * GET  /formulaires/:id : get the "id" formulaire.
+     *
+     * @param id the id of the formulaireDTO to retrieve
+     * @return the ResponseEntity with status 200 (OK) and with body the formulaireDTO, or with status 404 (Not Found)
+     */
+    @GetMapping("/formulaires/{code}")
+    @Timed
+    public ResponseEntity<FormulaireDTO> getFormulaire(@PathVariable Long id) {
+        log.debug("REST request to get Formulaire : {}", id);
+        FormulaireDTO formulaireDTO = formulaireService.findOne(id);
+        return ResponseUtil.wrapOrNotFound(Optional.ofNullable(formulaireDTO));
+    }
+
+    /**
+     * GET  /formulaires/complet/:id : get the "code" formulaire.
      *
      * @param code the id of the formulaireDTO to retrieve
      * @return the ResponseEntity with status 200 (OK) and with body the formulaireDTO, or with status 404 (Not Found)
      */
-    @GetMapping("/formulaires/{code}")
+    @GetMapping("/formulaires/complet/{code}")
     @Timed
     public ResponseEntity<FormulaireCompletDTO> getFormulaire(@PathVariable String code) {
         log.debug("REST request to get Formulaire : {}", code);

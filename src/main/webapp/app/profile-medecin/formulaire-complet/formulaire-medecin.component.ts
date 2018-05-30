@@ -1,121 +1,46 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { HttpResponse, HttpErrorResponse } from '@angular/common/http';
-import { ActivatedRoute, Router } from '@angular/router';
-import { Subscription } from 'rxjs/Subscription';
-import { JhiEventManager, JhiParseLinks, JhiAlertService } from 'ng-jhipster';
+import { ActivatedRoute } from '@angular/router';
 
-import { FormulaireRbsmr } from './formulaire-rbsmr.model';
-import { FormulaireRbsmrService } from './formulaire-rbsmr.service';
-import { ITEMS_PER_PAGE, Principal } from '../../shared';
+import {FormulaireCompletModel} from '../../shared/model/formulaire-complet.model';
+import {FormulaireCompletService} from '../../shared/services/formulaire-complet.service';
 
 @Component({
-    selector: 'jhi-formulaire-rbsmr',
-    templateUrl: './formulaire-rbsmr.component.html'
+    selector: 'jhi-formulaire-medecin',
+    templateUrl: './formulaire-medecin.component.html'
 })
-export class FormulaireRbsmrComponent implements OnInit, OnDestroy {
+export class FormulaireMedecinComponent implements OnInit, OnDestroy {
 
-currentAccount: any;
-    formulaires: FormulaireRbsmr[];
-    error: any;
-    success: any;
-    eventSubscriber: Subscription;
     routeData: any;
-    links: any;
-    totalItems: any;
-    queryCount: any;
-    itemsPerPage: any;
-    page: any;
-    predicate: any;
-    previousPage: any;
-    reverse: any;
+    formulaire: FormulaireCompletModel;
+    code: string;
 
     constructor(
-        private formulaireService: FormulaireRbsmrService,
-        private parseLinks: JhiParseLinks,
-        private jhiAlertService: JhiAlertService,
-        private principal: Principal,
         private activatedRoute: ActivatedRoute,
-        private router: Router,
-        private eventManager: JhiEventManager
+        private formulaireCompletService: FormulaireCompletService
     ) {
-        this.itemsPerPage = ITEMS_PER_PAGE;
-        this.routeData = this.activatedRoute.data.subscribe((data) => {
-            this.page = data.pagingParams.page;
-            this.previousPage = data.pagingParams.page;
-            this.reverse = data.pagingParams.ascending;
-            this.predicate = data.pagingParams.predicate;
+        this.routeData = this.activatedRoute.params.subscribe((params) => {
+             this.code = params.code;
+             this.loadPage();
         });
     }
 
-    loadAll() {
-        this.formulaireService.query({
-            page: this.page - 1,
-            size: this.itemsPerPage,
-            sort: this.sort()}).subscribe(
-                (res: HttpResponse<FormulaireRbsmr[]>) => this.onSuccess(res.body, res.headers),
-                (res: HttpErrorResponse) => this.onError(res.message)
-        );
-    }
-    loadPage(page: number) {
-        if (page !== this.previousPage) {
-            this.previousPage = page;
-            this.transition();
-        }
-    }
-    transition() {
-        this.router.navigate(['/formulaire-rbsmr'], {queryParams:
-            {
-                page: this.page,
-                size: this.itemsPerPage,
-                sort: this.predicate + ',' + (this.reverse ? 'asc' : 'desc')
-            }
-        });
-        this.loadAll();
+    loadPage() {
+        this.formulaireCompletService.find(this.code).subscribe(
+            (res: HttpResponse<FormulaireCompletModel>) => this.onSuccess(res.body, res.headers),
+            (res: HttpErrorResponse) => this.onError(res.message));
     }
 
-    clear() {
-        this.page = 0;
-        this.router.navigate(['/formulaire-rbsmr', {
-            page: this.page,
-            sort: this.predicate + ',' + (this.reverse ? 'asc' : 'desc')
-        }]);
-        this.loadAll();
-    }
     ngOnInit() {
-        this.loadAll();
-        this.principal.identity().then((account) => {
-            this.currentAccount = account;
-        });
-        this.registerChangeInFormulaires();
     }
 
     ngOnDestroy() {
-        this.eventManager.destroy(this.eventSubscriber);
-    }
-
-    trackId(index: number, item: FormulaireRbsmr) {
-        return item.id;
-    }
-    registerChangeInFormulaires() {
-        this.eventSubscriber = this.eventManager.subscribe('formulaireListModification', (response) => this.loadAll());
-    }
-
-    sort() {
-        const result = [this.predicate + ',' + (this.reverse ? 'asc' : 'desc')];
-        if (this.predicate !== 'id') {
-            result.push('id');
-        }
-        return result;
     }
 
     private onSuccess(data, headers) {
-        this.links = this.parseLinks.parse(headers.get('link'));
-        this.totalItems = headers.get('X-Total-Count');
-        this.queryCount = this.totalItems;
-        // this.page = pagingParams.page;
-        this.formulaires = data;
+        this.formulaire = data;
     }
     private onError(error) {
-        this.jhiAlertService.error(error.message, null, null);
+        console.log(error);
     }
 }

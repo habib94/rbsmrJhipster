@@ -2,6 +2,7 @@ package ma.rbsmr.jhipster.service.dto;
 
 
 import java.io.Serializable;
+import java.util.List;
 import java.util.Objects;
 
 /**
@@ -27,7 +28,7 @@ public class FormulaireCompletDTO implements Serializable {
 
     private String visiteNom;
 
-    private TemplateFormulaireCompletDTO templateFormulaire;
+    private List<QuestionDTO> questions;
 
     public Long getId() {
         return id;
@@ -102,12 +103,12 @@ public class FormulaireCompletDTO implements Serializable {
     }
 
 
-    public TemplateFormulaireCompletDTO getTemplateFormulaire() {
-        return templateFormulaire;
+    public List<QuestionDTO> getQuestions() {
+        return questions;
     }
 
-    public void setTemplateFormulaire(TemplateFormulaireCompletDTO templateFormulaire) {
-        this.templateFormulaire = templateFormulaire;
+    public void setQuestions(List<QuestionDTO> questions) {
+        this.questions = questions;
     }
 
     @Override
