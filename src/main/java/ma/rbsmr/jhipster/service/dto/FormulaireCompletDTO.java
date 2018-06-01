@@ -28,7 +28,7 @@ public class FormulaireCompletDTO implements Serializable {
 
     private String visiteNom;
 
-    private List<QuestionDTO> questions;
+    private List<QuestionCompletDTO> questions;
 
     public Long getId() {
         return id;
@@ -103,11 +103,11 @@ public class FormulaireCompletDTO implements Serializable {
     }
 
 
-    public List<QuestionDTO> getQuestions() {
+    public List<QuestionCompletDTO> getQuestions() {
         return questions;
     }
 
-    public void setQuestions(List<QuestionDTO> questions) {
+    public void setQuestions(List<QuestionCompletDTO> questions) {
         this.questions = questions;
     }
 

@@ -19,6 +19,11 @@ public interface ReponseMapper extends EntityMapper<ReponseDTO, Reponse> {
     @Mapping(source = "questionId", target = "question")
     Reponse toEntity(ReponseDTO reponseDTO);
 
+    default ReponseDTO fromQuestion(Question question){
+        ReponseDTO reponse = new ReponseDTO();
+        return reponse;
+    }
+
     default Reponse fromId(Long id) {
         if (id == null) {
             return null;
